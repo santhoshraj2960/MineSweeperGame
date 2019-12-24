@@ -70,10 +70,16 @@ class MineSweeperSolver():
                         self.visited_dict[str(cell[0]) + str(cell[1])] = True
             #print 'cell = ', cell
             #print 'no_of_mines_surrounding_cell = ', no_of_mines_surrounding_cell
+        #print 'vis = ', len(self.visited_dict)
+        #print 'min = ', len(self.mines_dict)
+
+        #print sorted(self.visited_dict.keys())
         self.print_mine_sweeper()
 
-        if len(visited_dict) + len(mines_dict) == no_of_row_cols * 2:
+        if (len(self.visited_dict.keys()) + len(self.mines_dict.keys()) == 
+            self.no_of_row_cols ** 2):
             print 'Hurray! You have successfully completed this game!'
+            return False
         
         return True
 
@@ -82,10 +88,11 @@ class MineSweeperSolver():
             print row
 
 
-if __name__ == 'main':
+if __name__ == '__main__':
+    print 'main'
     mine_sweeper_solver = MineSweeperSolver()
     mine_sweeper_solver.build_mine_sweeper()
-    user_input = raw_input('Enter cell number: ')
+    user_input = raw_input('Enter cell number as\n rowNumber<space>colNumber: ')
 
     while(mine_sweeper_solver.find_surrounding_mines(user_input)):
-        user_input = raw_input('Enter cell number: ')
+        user_input = raw_input('Enter cell number as \n rowNumber<space>colNumber: ')
