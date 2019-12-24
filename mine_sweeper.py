@@ -35,7 +35,7 @@ class MineSweeperSolver():
             return True
         elif user_input.split()[0] + user_input.split()[1] in self.mines_dict:
             print 'Oops you just stepped on a mine. You LOST!'
-            print self.mines_dict
+            print 'All the mines in the matrix are ', self.mines_dict.keys()
             return False
 
         #Doing a BFS to find the surrounding mines
