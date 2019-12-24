@@ -7,7 +7,7 @@ class MineSweeperSolver():
         self.mine_sweeper = []
         self.mines_dict = {}
         self.visited_dict = {}
-        # all_combs dict- used to traverse through the minesweeper
+        # all_combs - used to traverse through the minesweeper in all directions
         self.all_combs = [(1,0), (0,1), (-1,0), (0,-1), (-1,-1), (1,1)]
 
     def build_mine_sweeper(self):
@@ -68,12 +68,7 @@ class MineSweeperSolver():
                     else:
                         queue.append(cell)
                         self.visited_dict[str(cell[0]) + str(cell[1])] = True
-            #print 'cell = ', cell
-            #print 'no_of_mines_surrounding_cell = ', no_of_mines_surrounding_cell
-        #print 'vis = ', len(self.visited_dict)
-        #print 'min = ', len(self.mines_dict)
 
-        #print sorted(self.visited_dict.keys())
         self.print_mine_sweeper()
 
         if (len(self.visited_dict.keys()) + len(self.mines_dict.keys()) == 
@@ -89,7 +84,6 @@ class MineSweeperSolver():
 
 
 if __name__ == '__main__':
-    print 'main'
     mine_sweeper_solver = MineSweeperSolver()
     mine_sweeper_solver.build_mine_sweeper()
     user_input = raw_input('Enter cell number as\n rowNumber<space>colNumber: ')
