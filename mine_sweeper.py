@@ -70,23 +70,34 @@ class MineSweeperSolver():
                         self.visited_dict[str(cell[0]) + str(cell[1])] = True
 
         self.print_mine_sweeper()
+        
+        print 'Number of non mine cells to discover = ', (self.no_of_row_cols ** 2\
+         - 1) - (len(self.visited_dict.keys()) + len(self.mines_dict.keys()))
 
         if (len(self.visited_dict.keys()) + len(self.mines_dict.keys()) == 
-            self.no_of_row_cols ** 2):
-            print 'Hurray! You have successfully completed this game!'
+            (self.no_of_row_cols ** 2) - 1):
+            print '\n\nHurray! You have successfully completed this game!\n\n'
             return False
         
         return True
 
     def print_mine_sweeper(self):
+        print '\n\n'
         for row in self.mine_sweeper:
             print row
 
 
 if __name__ == '__main__':
+    print 'Welcome! Here is your board\n'
     mine_sweeper_solver = MineSweeperSolver()
     mine_sweeper_solver.build_mine_sweeper()
-    user_input = raw_input('Enter cell number as\n rowNumber<space>colNumber: ')
+    user_input = raw_input('\n\nType the cell you want to uncover in the following \
+format Row Number <space> Col Number (eg: 5 4): ')
 
     while(mine_sweeper_solver.find_surrounding_mines(user_input)):
-        user_input = raw_input('Enter cell number as \n rowNumber<space>colNumber: ')
+        user_input = raw_input('\n\nType the cell you want to uncover in the \
+following format Row Number <space> Col Number (eg: 5 4): ')
+
+
+#{'87': True, '03': True, '12': True, '44': True, '28': True, '34': True, 
+#'62': True, '73': True, '57': True}
